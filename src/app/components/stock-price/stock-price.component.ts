@@ -112,8 +112,7 @@ counter=0;
       main = rs;
 
       var dat = new Date(rs[0]['date'])
-      console.log(rs[0]['date'])
-      console.log(rs[0]['value'])
+      
       dates.push([dat.getTime(), rs[0]['value']]);
     })
 
@@ -379,6 +378,8 @@ counter=0;
     },
       error => {
         console.log(error);
+        this.messageService.add({ severity: 'warn', summary: 'Error', detail: AppUtil.ERROR_OCCUR, sticky: true });
+  
       }
     );
 
@@ -574,6 +575,8 @@ if (this.chartData.has(ticker)) {
         },
           error => {
             this.loading = false;
+            this.messageService.add({ severity: 'warn', summary: 'Error', detail: AppUtil.ERROR_OCCUR, sticky: true });
+  
             console.log(error);
           }
         );
@@ -585,7 +588,6 @@ if (this.chartData.has(ticker)) {
     datasests.push(this.getDataFromStore(AppUtil.HIGH))
     datasests.push(this.getDataFromStore(AppUtil.LOW))
     datasests.push(this.getDataFromStore(AppUtil.OPEN))
-    console.log(JSON.stringify(this.getDataFromStore(AppUtil.OPEN)))
     this.seriesOptions = {
       series: datasests,
       chart: {
@@ -738,7 +740,7 @@ if (this.chartData.has(ticker)) {
         }
       )
     })
-    console.log(JSON.stringify(datasests))
+    
 
     this.chartOptionsV = {
       series: datasests,

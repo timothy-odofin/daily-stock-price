@@ -2,6 +2,7 @@ export class AppUtil {
     public static OPEN='Open';
     public static LOW='Low';
     public static HIGH='High';
+    public static ERROR_OCCUR='Error fetching record from server';
  }
  export function getDate(date){
     let month:any = new Date(date).getMonth() + 1;
